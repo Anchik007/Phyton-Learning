@@ -1,4 +1,5 @@
-1. Leap Year Function (is_leap)
+
+1. Leap Year Function
 
 def is_leap(year):
     """
@@ -19,7 +20,8 @@ def is_leap(year):
 
     return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
-# Example
+
+# Example usage:
 print(is_leap(2000))  # True
 print(is_leap(1900))  # False
 print(is_leap(2024))  # True
@@ -27,36 +29,54 @@ print(is_leap(2024))  # True
 
 n = int(input("Enter a number: "))
 
+# Check and print based on specified conditions
 if n % 2 == 1:
     print("Weird")
-elif n % 2 == 0 and 2 <= n <= 5:
+elif 2 <= n <= 5:
     print("Not Weird")
-elif n % 2 == 0 and 6 <= n <= 20:
+elif 6 <= n <= 20:
     print("Weird")
-elif n % 2 == 0 and n > 20:
+else:  # n is even and greater than 20
     print("Not Weird")
+ Sample Inputs / Outputs:
 
-n = 3 → Weird
+Input: 3 → Output: Weird
 
-n = 4 → Not Weird
+Input: 4 → Output: Not Weird
 
-n = 18 → Weird
+Input: 18 → Output: Weird
 
-n = 22 → Not Weird
+Input: 22 → Output: Not Weird
 
-3. Even Numbers Between a and b Without Loop
- Solution 1: With if-else using list comprehension
+ 3. Even Numbers Between a and b (Without Using Loop)
+Includes Solution 1 with if-else + list comprehension and Solution 2 with smart range() logic — both with error handling and comments.
+
+Solution 1: With if-else using list comprehension
 
 a = 3
 b = 12
 
+# Validate input
+if a > b:
+    raise ValueError("Invalid range: 'a' should be less than or equal to 'b'.")
+
+# List comprehension with an if-condition to filter even numbers
 even_numbers = [i for i in range(a, b + 1) if i % 2 == 0]
-print("Even numbers:", even_numbers)
- Solution 2: Without if-else — Using range() smartly
-ь
+
+print("Even numbers between a and b:", even_numbers)
+ Solution 2: Without if (using smart range() logic)
+
 a = 3
 b = 12
 
-start = a + (a % 2)  # If a is odd, go to next even; else stay
+# Validate input
+if a > b:
+    raise ValueError("Invalid range: 'a' should be less than or equal to 'b'.")
+
+# Start from the first even number ≥ a
+start = a if a % 2 == 0 else a + 1
+
+# Use step=2 to skip all odd numbers
 even_numbers = list(range(start, b + 1, 2))
-print("Even numbers:", even_numbers)
+
+print("Even numbers between a and b:", even_numbers)
